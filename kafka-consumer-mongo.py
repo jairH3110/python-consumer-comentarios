@@ -15,7 +15,7 @@ uri = "mongodb+srv://jairh3110:gitachi131@cluster0.gdfwizt.mongodb.net/?retryWri
 
 
 # Create a new client and connect to the server
-#client = MongoClient(uri, server_api=ServerApi('1'))
+#client = MongoClient(uri, server_api=ServerApi('1'))xd
 # Send a ping to confirm a successful connection
 
 #try:
