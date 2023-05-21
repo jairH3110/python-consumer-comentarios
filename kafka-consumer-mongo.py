@@ -3,10 +3,8 @@
 # pip install pymongo
 # pip install "pymongo[srv]"
 from kafka import KafkaConsumer
-from pymongo.mongo_client import MongoClient
 from pymongo import MongoClient
 from pymongo.server_api import ServerApi
-
 import json
 import subprocess
 
@@ -31,18 +29,17 @@ uri = "mongodb+srv://jairh3110:gitachi131@cluster0.gdfwizt.mongodb.net/?retryWri
 try:
     print("entro a linea 30")
     client = MongoClient(uri, server_api=ServerApi('1'))
-    print("entro a linea 34")
     client.admin.command('ping')
-    print("entro a linea 36")
+    
     print("Pinged your deployment. You successfully connected to MongoDB!")
-    print("entro a linea 38")
+
     db = client.devices
     print("MongoDB Connected successfully!")
 except:
     print("Could not connect to MongoDB")
 
 consumer = KafkaConsumer('test',bootstrap_servers=[
-     'localhost:9092'
+     'my-kafkaf-0.my-kafkaf-headless.jairh3110.svc.cluster.local:9092'
     ])
 # Parse received data from Kafka
 for msg in consumer:
