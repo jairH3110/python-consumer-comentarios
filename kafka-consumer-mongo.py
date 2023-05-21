@@ -11,7 +11,7 @@ import subprocess
 
 
 # replace here with your mongodb url 
-uri = "mongodb+srv://jairh3110:<Gitachi131>@cluster0.gdfwizt.mongodb.net/?retryWrites=true&w=majority"
+uri = "mongodb+srv://jairh3110:Gitachi131@cluster0.gdfwizt.mongodb.net/?retryWrites=true&w=majority"
 
 
 # Create a new client and connect to the server
@@ -37,7 +37,7 @@ except:
     print("Could not connect to MongoDB")
 
 consumer = KafkaConsumer('test',bootstrap_servers=[
-     'mongodb+srv://jairh3110:<Gitachi131>@cluster0.gdfwizt.mongodb.net/?retryWrites=true&w=majority'
+     'mongodb+srv://jairh3110:Gitachi131@cluster0.gdfwizt.mongodb.net/?retryWrites=true&w=majority'
     ])
 # Parse received data from Kafka
 for msg in consumer:
