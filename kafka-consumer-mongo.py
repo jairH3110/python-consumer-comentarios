@@ -6,7 +6,7 @@ from kafka import KafkaConsumer
 from pymongo import MongoClient
 from pymongo.server_api import ServerApi
 import json
-import subprocess
+
 
 
 
