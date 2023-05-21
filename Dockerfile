@@ -1,4 +1,4 @@
-FROM python:3.10.6
+FROM python:3
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 RUN curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
@@ -10,4 +10,4 @@ RUN kubectl version --client
 COPY requirements.txt /
 RUN pip install -r requirements.txt
 COPY . /
-CMD python3.10 kafka-consumer-mongo.py
+CMD python3 kafka-consumer-mongo.py
