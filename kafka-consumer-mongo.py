@@ -11,7 +11,7 @@ import subprocess
 
 
 # replace here with your mongodb url 
-uri = "mongodb+srv://jairh3110:Gitachi131@cluster0.gdfwizt.mongodb.net/?retryWrites=true&w=majority"
+uri = "mongodb+srv://jairh3110:gitachi131@cluster0.gdfwizt.mongodb.net/?retryWrites=true&w=majority"
 
 
 # Create a new client and connect to the server
@@ -27,8 +27,10 @@ uri = "mongodb+srv://jairh3110:Gitachi131@cluster0.gdfwizt.mongodb.net/?retryWri
 # Connect to MongoDB and pizza_data database
 
 try:
+    print("entro a linea 30")
     client = MongoClient(uri, server_api=ServerApi('1'))
     client.admin.command('ping')
+    
     print("Pinged your deployment. You successfully connected to MongoDB!")
 
     db = client.devices
@@ -37,7 +39,7 @@ except:
     print("Could not connect to MongoDB")
 
 consumer = KafkaConsumer('test',bootstrap_servers=[
-     'mongodb+srv://jairh3110:Gitachi131@cluster0.gdfwizt.mongodb.net/?retryWrites=true&w=majority'
+     'localhost:9092'
     ])
 # Parse received data from Kafka
 for msg in consumer:
