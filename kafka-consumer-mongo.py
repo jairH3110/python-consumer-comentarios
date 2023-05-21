@@ -26,17 +26,17 @@ uri = "mongodb+srv://jairh3110:gitachi131@cluster0.gdfwizt.mongodb.net/?retryWri
 
 # Connect to MongoDB and pizza_data database
 
-try:
-    print("entro a linea 30")
-    client = MongoClient(uri, server_api=ServerApi('1'))
-    client.admin.command('ping')
-    
-    print("Pinged your deployment. You successfully connected to MongoDB!")
 
-    db = client.devices
-    print("MongoDB Connected successfully!")
-except:
-    print("Could not connect to MongoDB")
+print("entro a linea 30")
+client = MongoClient(uri, server_api=ServerApi('1'))
+client.admin.command('ping')
+    
+print("Pinged your deployment. You successfully connected to MongoDB!")
+
+db = client.devices
+print("MongoDB Connected successfully!")
+
+print("Could not connect to MongoDB")
 
 consumer = KafkaConsumer('test',bootstrap_servers=[
      'my-kafkaf-0.my-kafkaf-headless.jairh3110.svc.cluster.local:9092'
