@@ -63,7 +63,7 @@ for msg in consumer:
 
 
 
-try:
+    try:
        agg_result= db.devices.aggregate(
        [{
          "$group" : 
@@ -77,6 +77,7 @@ try:
          summary_id = db.devices_summary.insert_one(i)
          print("Summary inserted with record ids", summary_id)
 
-except Exception as e:
-    print(f'group by caught {type(e)}: ')
-    print(e)
+    except Exception as e:
+       print(f'group by caught {type(e)}: ')
+       print(e)
+    
