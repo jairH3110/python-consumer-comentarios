@@ -28,6 +28,7 @@ uri = "mongodb+srv://jairh3110:gitachi131@cluster0.gdfwizt.mongodb.net/?retryWri
 
 try:
     print("entro a linea 30")
+    print("entro a la segunda linea")
     client = MongoClient(uri, server_api=ServerApi('1'))
     client.admin.command('ping')
     
