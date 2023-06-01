@@ -46,14 +46,14 @@ consumer = KafkaConsumer('test',bootstrap_servers=[
 for msg in consumer:
     record = json.loads(msg.value)
     print(record)
-    reaccionid= record['reaccionid']
+    message= record['message']
     usuarioid= record['usuarioid']
 
     # Create dictionary and ingest data into MongoDB
     try:
-       meme_rec = {'reaccionid':reaccionid,'usuarioid':usuarioid }
+       meme_rec = {'message':message,'usuarioid':usuarioid }
        print (meme_rec)
-       meme_id = db.publicacion.insert_one(meme_rec)
+       meme_id = db.publicacionmessage.insert_one(meme_rec)
        print("Data inserted with record ids", meme_id)
 
        #subprocess.call(['sh', './test.sh'])
@@ -68,14 +68,14 @@ for msg in consumer:
        agg_result= db.devices.aggregate(
        [{
          "$group" : 
-         {  "_id" : "$reaccionid", 
+         {  "_id" : "$message", 
             "n"    : {"$sum": 1}
          }}
        ])
-       db.devices_summaryxd.delete_many({})
+       db.devices_summarymessage.delete_many({})
        for i in agg_result:
          print(i)
-         summary_id = db.devices_summaryxd.insert_one(i)
+         summary_id = db.devices_summarymessage.insert_one(i)
          print("Summary inserted with record ids", summary_id)
 
     except Exception as e:
