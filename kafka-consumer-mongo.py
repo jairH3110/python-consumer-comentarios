@@ -46,11 +46,12 @@ consumer = KafkaConsumer('test',bootstrap_servers=[
 for msg in consumer:
     record = json.loads(msg.value)
     print(record)
-    name = record['name']
+    reaccionid= record['reaccionid']
+    usuarioid= record['usuarioid']
 
     # Create dictionary and ingest data into MongoDB
     try:
-       meme_rec = {'name':name }
+       meme_rec = {'reaccionid':reaccionid,'usuarioid':usuarioid }
        print (meme_rec)
        meme_id = db.devices.insert_one(meme_rec)
        print("Data inserted with record ids", meme_id)
@@ -67,7 +68,7 @@ for msg in consumer:
        agg_result= db.devices.aggregate(
        [{
          "$group" : 
-         {  "_id" : "$name", 
+         {  "_id" : "$reaccionid", 
             "n"    : {"$sum": 1}
          }}
        ])
