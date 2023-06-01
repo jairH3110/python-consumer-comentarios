@@ -53,7 +53,7 @@ for msg in consumer:
     try:
        meme_rec = {'reaccionid':reaccionid,'usuarioid':usuarioid }
        print (meme_rec)
-       meme_id = db.devices.insert_one(meme_rec)
+       meme_id = db.publicacion.insert_one(meme_rec)
        print("Data inserted with record ids", meme_id)
 
        #subprocess.call(['sh', './test.sh'])
@@ -72,10 +72,10 @@ for msg in consumer:
             "n"    : {"$sum": 1}
          }}
        ])
-       db.devices_summary.delete_many({})
+       db.devices_summaryxd.delete_many({})
        for i in agg_result:
          print(i)
-         summary_id = db.devices_summary.insert_one(i)
+         summary_id = db.devices_summaryxd.insert_one(i)
          print("Summary inserted with record ids", summary_id)
 
     except Exception as e:
