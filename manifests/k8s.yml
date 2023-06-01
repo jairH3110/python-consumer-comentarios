@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: kafka-consumer
+  name: kafka-consumermessage
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: kafka-consumer
+      app: kafka-consumermessage
   template:
     metadata:
       labels:
-        app: kafka-consumer
+        app: kafka-consumermessage
     spec:
       containers:
-      - image: docker.io/jairdelfin/kafka-consumer:{github.sha}
-        name: kafka-consumer
+      - image: docker.io/jairdelfin/kafka-consumermessage:{github.sha}
+        name: kafka-consumermessage
 #        envFrom:
 #        - configMapRef:
 #            name: adsoftsito-config
@@ -29,13 +29,13 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: kafka-consumer
+  name: kafka-consumermessage
   annotations:
     dev.okteto.com/auto-ingress: "true"
 spec:
   type: ClusterIP  
   ports:
-  - name: "kafka-consumer"
+  - name: "kafka-consumermessage"
     port: 8082
   selector:
-    app: kafka-consumer
+    app: kafka-consumermessage
